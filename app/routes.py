@@ -57,5 +57,5 @@ def tareas():
     if 'python-requests' in user_agent:
         return render_template('bienvenida.html', nombre=nombre)
     else:
-        url_github = f"https://SantiagoNoelPaguaga.github.io/programacion-sobre-redes-pfo-2/bienvenida.html?nombre={nombre}"
+        url_github = f"https://santiagonoelpaguaga.github.io/programacion-sobre-redes-pfo-2/bienvenida.html?nombre={nombre}"
         return redirect(url_github)
