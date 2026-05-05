@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Gestión de Tareas</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #4f46e5;
+        --primary-hover: #4338ca;
+        --bg: #f8fafc;
+        --text-main: #1e293b;
+        --white: #ffffff;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg);
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+
+      .navbar {
+        background: var(--white);
+        padding: 1rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .navbar h1 {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+      }
+
+      .login-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .login-card {
+        background: var(--white);
+        padding: 2.5rem;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+      }
+
+      .login-card h2 {
+        margin-top: 0;
+        color: var(--text-main);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+
+      .input-group {
+        text-align: left;
+        margin-bottom: 1.2rem;
+      }
+
+      label {
+        display: block;
+        font-size: 0.85rem;
+        color: #64748b;
+        margin-bottom: 0.5rem;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1rem;
+        margin-top: 1rem;
+        transition: background 0.3s ease;
+      }
+
+      button:hover {
+        background-color: var(--primary-hover);
+      }
+
+      .footer-links {
+        margin-top: 1.5rem;
+        font-size: 0.85rem;
+        color: #64748b;
+      }
+
+      .footer-links a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      .error {
+        color: #ef4444;
+        background: #fee2e2;
+        padding: 10px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        margin-top: 1rem;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <h1>Programación sobre redes - PFO 2</h1>
+    </nav>
+
+    <div class="login-container">
+      <div class="login-card">
+        <h2>Iniciar Sesión</h2>
+        <div class="input-group">
+          <label>Usuario</label>
+          <input type="text" id="user" placeholder="Ej: JuanPerez" />
+        </div>
+        <div class="input-group">
+          <label>Contraseña</label>
+          <input type="password" id="pass" placeholder="••••••••" />
+        </div>
+        <button onclick="handleLogin()">Acceder al Sistema</button>
+
+        <p id="error-msg" class="error">
+          Credenciales incorrectas. Intenta de nuevo.
+        </p>
+
+        <div class="footer-links">
+          ¿No tienes una cuenta?
+          <a href="registro.html">Regístrate aquí</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      async function handleLogin() {
+        const usuario = document.getElementById("user").value;
+        const pass = document.getElementById("pass").value;
+        const errorMsg = document.getElementById("error-msg");
+
+        try {
+          const response = await fetch("http://localhost:5000/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ usuario: usuario, contraseña: pass }),
+          });
+
+          if (response.ok) {
+            window.location.href = "http://localhost:5000/tareas";
+          } else {
+            errorMsg.style.display = "block";
+          }
+        } catch (error) {
+          alert("Error de conexión con el servidor.");
+        }
+      }
+    </script>
+  </body>
+</html>
