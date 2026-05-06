@@ -3,19 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bienvenida</title>
+    <title>Bienvenida - PFO 2</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
         --primary: #4f46e5;
-        --primary-soft: #e0e7ff;
-        --bg: #f8fafc;
-        --text-main: #1e293b;
-        --text-muted: #64748b;
+        --primary-dark: #3730a3;
+        --primary-soft: #eef2ff;
+        --bg: #f1f5f9;
         --white: #ffffff;
+        --text-main: #0f172a;
+        --text-muted: #475569;
+        --border: #e2e8f0;
+        --terminal-bg: #1e293b;
       }
 
       body {
@@ -23,16 +26,17 @@
         background-color: var(--bg);
         margin: 0;
         color: var(--text-main);
+        line-height: 1.6;
       }
 
       .navbar {
         background: var(--white);
-        padding: 0 2rem;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        padding: 0 1.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 70px;
+        height: 64px;
         position: sticky;
         top: 0;
         z-index: 100;
@@ -41,65 +45,159 @@
       .subject-tag {
         background: var(--primary-soft);
         color: var(--primary);
-        padding: 6px 12px;
-        border-radius: 8px;
-        font-size: 0.85rem;
+        padding: 5px 12px;
+        border-radius: 6px;
+        font-size: 0.8rem;
         font-weight: 600;
-        letter-spacing: 0.5px;
+        text-transform: uppercase;
       }
 
       .user-profile {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .welcome-text {
-        font-size: 0.95rem;
-        font-weight: 400;
+        font-size: 0.9rem;
         color: var(--text-muted);
       }
 
-      .welcome-text strong {
-        color: var(--text-main);
-        font-weight: 600;
+      .user-profile strong {
+        color: var(--primary);
       }
 
-      .dashboard {
-        max-width: 800px;
-        margin: 60px auto;
+      .container {
+        max-width: 1000px;
+        margin: 40px auto;
         padding: 0 20px;
+      }
+
+      header.welcome-hero {
         text-align: center;
+        margin-bottom: 50px;
       }
 
-      .hero-card {
-        background: var(--white);
-        padding: 4rem 2rem;
-        border-radius: 24px;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
-        border: 1px solid rgba(226, 232, 240, 0.8);
-      }
-
-      .hero-card h1 {
-        font-size: 2.5rem;
-        margin: 0 0 1rem 0;
+      header.welcome-hero h1 {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
         color: var(--text-main);
-        font-weight: 600;
       }
 
-      .hero-card p {
+      header.welcome-hero p {
         color: var(--text-muted);
         font-size: 1.1rem;
-        line-height: 1.6;
-        margin: 0;
       }
 
-      @media (max-width: 600px) {
-        .navbar {
-          padding: 0 1rem;
+      section {
+        background: var(--white);
+        padding: 2.5rem;
+        border-radius: 16px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+        border: 1px solid var(--border);
+      }
+
+      h2 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.5rem;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        color: var(--text-main);
+        border-left: 4px solid var(--primary);
+        padding-left: 15px;
+      }
+
+      h3 {
+        color: var(--primary-dark);
+        font-size: 1.1rem;
+        margin-top: 2rem;
+      }
+
+      .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .tech-item {
+        background: var(--bg);
+        padding: 12px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid var(--border);
+      }
+
+      .tech-item span {
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      pre {
+        background: var(--terminal-bg);
+        color: #e2e8f0;
+        padding: 1.2rem;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        border-left: 4px solid #6366f1;
+      }
+
+      code {
+        font-family: "Fira Code", monospace;
+      }
+
+      .test-card {
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+        border-bottom: 1px dashed var(--border);
+      }
+
+      .test-card:last-child {
+        border-bottom: none;
+      }
+
+      .test-card img {
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        margin: 1.5rem 0;
+        border: 1px solid var(--border);
+      }
+
+      .test-card p {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        background: #f8fafc;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid var(--border);
+      }
+
+      .concept-box {
+        margin-bottom: 20px;
+      }
+
+      .concept-box strong {
+        display: block;
+        color: var(--primary-dark);
+        margin-bottom: 5px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 40px 0;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          margin: 20px auto;
         }
-        .welcome-text {
-          display: none;
+        section {
+          padding: 1.5rem;
         }
         .hero-card h1 {
           font-size: 1.8rem;
@@ -109,30 +207,173 @@
   </head>
   <body>
     <nav class="navbar">
-      <div class="subject-tag">Programación sobre redes - PFO 2</div>
-
+      <div class="subject-tag">PFO 2 - Redes</div>
       <div class="user-profile">
-        <span class="welcome-text">
-          Bienvenido, <strong id="user-name">Cargando...</strong>
-        </span>
+        Bienvenido, <strong id="user-name">...</strong>
       </div>
     </nav>
 
-    <main class="dashboard">
-      <div class="hero-card">
-        <h1>Sistema de Gestión de Tareas</h1>
-        <p>Accediste al portal de gestión de tareas.</p>
-      </div>
-    </main>
+    <div class="container">
+      <header class="welcome-hero">
+        <h1>¡Bienvenido al Dashboard!</h1>
+        <p>Has accedido correctamente al Portal de Gestión de Tareas.</p>
+      </header>
+
+      <section>
+        <h2>Descripción del Proyecto</h2>
+        <p>
+          Implementación de una <strong>API REST funcional</strong> para la
+          gestión de tareas. El sistema cuenta con una arquitectura híbrida que
+          garantiza portabilidad local y disponibilidad en la nube.
+        </p>
+        <div class="tech-grid">
+          <div class="tech-item"><span>Local:</span> Flask + Consola</div>
+          <div class="tech-item"><span>Cloud:</span> VPS Oracle + Docker</div>
+          <div class="tech-item"><span>Web:</span> GitHub Pages</div>
+          <div class="tech-item"><span>Seguridad:</span> Nginx + SSL</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Tecnologías Utilizadas</h2>
+        <div class="tech-grid">
+          <div class="tech-item">Python 3 / Flask</div>
+          <div class="tech-item">SQLite (Persistencia)</div>
+          <div class="tech-item">Werkzeug Security (Hashing)</div>
+          <div class="tech-item">Docker & Docker Compose</div>
+          <div class="tech-item">Nginx & Certbot (SSL)</div>
+          <div class="tech-item">GitHub Pages (Frontend)</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Cómo ejecutar el proyecto</h2>
+        <h3>1. Ejecución Local (Consola)</h3>
+        <p>Clonar e instalar dependencias:</p>
+        <pre><code>pip install -r requirements.txt</code></pre>
+        <p>Ejecutar servidor:</p>
+        <pre><code>python3 servidor.py</code></pre>
+        <p>Ejecutar cliente:</p>
+        <pre><code>python3 cliente.py</code></pre>
+      </section>
+
+      <section>
+        <h2>Pruebas de Funcionamiento</h2>
+
+        <div class="test-card">
+          <h3>1. Inicialización del Sistema en Consola</h3>
+          <img src="img/imagen1.png" alt="Arranque del sistema" />
+          <p>
+            Arranque inicial de los componentes del entorno local. En la
+            terminal izquierda se ejecuta <code>servidor.py</code> y en la
+            derecha el <code>cliente.py</code>, desplegando el menú de
+            interacción para el usuario.
+          </p>
+        </div>
+
+        <div class="test-card">
+          <h3>2. Validación de Integridad (HTTP 400)</h3>
+          <img src="img/imagen2.png" alt="Error 400" />
+          <p>
+            Demostración de la lógica de validación en el endpoint
+            <code>POST/registro</code>. Al intentar registrar un usuario ya
+            existente en la base de datos <code>SQLite</code>, el servidor
+            responde con un error 400 (Bad Request).
+          </p>
+        </div>
+
+        <div class="test-card">
+          <h3>3. Registro Exitoso de Usuario (HTTP 201)</h3>
+          <img src="img/imagen3.png" alt="Registro 201" />
+          <p>
+            Proceso de alta exitosa para un nuevo usuario. El servidor confirma
+            la creación del recurso con un código 201 y almacena los datos de
+            forma persistente.
+          </p>
+        </div>
+
+        <div class="test-card">
+          <h3>4. Protección de Rutas (HTTP 401)</h3>
+          <img src="img/imagen4.png" alt="Error 401 rutas" />
+          <p>
+            Verificación de seguridad en el endpoint
+            <code>GET/tareas</code>. El sistema bloquea el acceso con un código
+            401 si no detecta una sesión activa, garantizando que el contenido
+            sea privado.
+          </p>
+        </div>
+
+        <div class="test-card">
+          <h3>5. Intento de Inicio de Sesión Fallido</h3>
+          <img src="img/imagen5.png" alt="Error 401 login" />
+          <p>
+            Control de autenticación. Al ingresar credenciales incorrectas en el
+            endpoint <code>POST/login</code>, el servidor deniega el acceso para
+            proteger la cuenta del usuario.
+          </p>
+        </div>
+
+        <div class="test-card">
+          <h3>6. Inicio de Sesión Exitoso (HTTP 200)</h3>
+          <img src="img/imagen6.png" alt="Login 200" />
+          <p>
+            Autenticación exitosa mediante la verificación de credenciales. El
+            servidor responde con un código 200 y activa la sesión para el
+            usuario autenticado.
+          </p>
+        </div>
+
+        <div class="test-card">
+          <h3>7. Acceso Autorizado y Respuesta HTML</h3>
+          <img src="img/imagen7.png" alt="Bienvenida HTML" />
+          <p>
+            Visualización del recurso protegido. El servidor entrega un
+            documento HTML de bienvenida personalizado tras validar
+            satisfactoriamente la sesión del usuario.
+          </p>
+        </div>
+
+        <div class="test-card">
+          <h3>8. Persistencia y Seguridad (DB Browser)</h3>
+          <img src="img/imagen8.png" alt="Persistencia SQLite" />
+          <p>
+            Evidencia del almacenamiento en la base de datos
+            <code>database.db</code>. Se observa que las contraseñas están
+            protegidas mediante hashing, cumpliendo con los estándares de
+            seguridad requeridos.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Respuestas Conceptuales</h2>
+        <div class="concept-box">
+          <strong>¿Por qué hashear contraseñas?</strong>
+          <p>
+            Es una función unidireccional que protege la información sensible.
+            Si la base de datos fuera vulnerada, el atacante solo encontraría
+            cadenas ilegibles.
+          </p>
+        </div>
+        <div class="concept-box">
+          <strong>Ventajas de usar SQLite</strong>
+          <p>
+            Persistencia directa en un solo archivo, sin configuración de
+            motores externos y alta portabilidad.
+          </p>
+        </div>
+      </section>
+
+      <footer>
+        <strong>Santiago Noel Paguaga</strong> — Programación sobre Redes
+      </footer>
+    </div>
+
     <script>
       const params = new URLSearchParams(window.location.search);
       const nombreUsuario = params.get("nombre");
-
-      if (nombreUsuario) {
-        document.getElementById("user-name").textContent = nombreUsuario;
-      } else {
-        document.getElementById("user-name").textContent = "Invitado";
-      }
+      document.getElementById("user-name").textContent =
+        nombreUsuario || "Invitado";
     </script>
   </body>
 </html>
